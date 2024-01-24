@@ -1,3 +1,4 @@
+using System;
 using MuHuMbl.BitwiseSerializer.Attributes;
 using MuHuMbl.BitwiseSerializer.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;

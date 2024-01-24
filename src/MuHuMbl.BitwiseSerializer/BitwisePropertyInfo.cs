@@ -1,3 +1,5 @@
+using System;
+
 namespace MuHuMbl.BitwiseSerializer;
 
 public class BitwisePropertyInfo

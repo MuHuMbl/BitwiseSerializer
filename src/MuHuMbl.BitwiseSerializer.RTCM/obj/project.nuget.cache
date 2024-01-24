@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3vz3Z50Y+wBnXlEEjYehzgnVG345dEu3Yvo6CsjJ52tUuTHjKXsoLtSkeryKwQ4Z0qWtJtXr9ms5eCTygT3gQQ==",
+  "success": true,
+  "projectFilePath": "/Users/yaroslav.glukhov/local_projects/my_github/BitwiseSerializer/src/MuHuMbl.BitwiseSerializer.RTCM/MuHuMbl.BitwiseSerializer.RTCM.csproj",
+  "expectedPackageFiles": [
+    "/Users/yaroslav.glukhov/.nuget/packages/microsoft.netcore.app.ref/6.0.25/microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "/Users/yaroslav.glukhov/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.25/microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}

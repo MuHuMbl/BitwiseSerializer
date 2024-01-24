@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1129DC7F-B9C5-4341-9239-6640B9CD577F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuHuMbl.BitwiseSerializer", "src\MuHuMbl.BitwiseSerializer\MuHuMbl.BitwiseSerializer.csproj", "{80519C8F-8613-47D5-ABD6-0415D6FFB3BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuHuMbl.BitwiseSerializer.RTCM", "src\MuHuMbl.BitwiseSerializer.RTCM\MuHuMbl.BitwiseSerializer.RTCM.csproj", "{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5BD79F4F-82FB-4ED5-ACD2-A61B51AFA6E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuHuMbl.BitwiseSerializer.Tests", "tests\MuHuMbl.BitwiseSerializer.Tests\MuHuMbl.BitwiseSerializer.Tests.csproj", "{32796F5D-B7B0-458E-891C-019F1E655CAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{80519C8F-8613-47D5-ABD6-0415D6FFB3BA} = {1129DC7F-B9C5-4341-9239-6640B9CD577F}
+		{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6} = {1129DC7F-B9C5-4341-9239-6640B9CD577F}
+		{32796F5D-B7B0-458E-891C-019F1E655CAA} = {5BD79F4F-82FB-4ED5-ACD2-A61B51AFA6E7}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80519C8F-8613-47D5-ABD6-0415D6FFB3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80519C8F-8613-47D5-ABD6-0415D6FFB3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80519C8F-8613-47D5-ABD6-0415D6FFB3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80519C8F-8613-47D5-ABD6-0415D6FFB3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BA4A7B-C5A1-4920-87B1-CB2EA9A671D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32796F5D-B7B0-458E-891C-019F1E655CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32796F5D-B7B0-458E-891C-019F1E655CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32796F5D-B7B0-458E-891C-019F1E655CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32796F5D-B7B0-458E-891C-019F1E655CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

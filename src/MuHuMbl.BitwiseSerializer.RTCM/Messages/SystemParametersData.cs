@@ -2,10 +2,11 @@
 using MuHuMbl.BitwiseSerializer.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Items;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages
 {
-    public class SystemParametersData<TDataItem> 
+    public class SystemParametersData : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }
@@ -26,6 +27,6 @@ namespace MuHuMbl.BitwiseSerializer.RTCM.Messages
         public byte LeapSeconds { get; set; }
 
         [RefDataField(6, DataType.RawValue, nameof(MessagesCount))]
-        public TDataItem[] Items { get; set; }
+        public SystemMessage[] Items { get; set; }
     }
 }

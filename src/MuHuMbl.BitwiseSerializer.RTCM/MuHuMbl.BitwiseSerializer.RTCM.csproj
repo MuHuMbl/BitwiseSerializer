@@ -9,4 +9,8 @@
       <ProjectReference Include="..\MuHuMbl.BitwiseSerializer\MuHuMbl.BitwiseSerializer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Messages\Observations\Items\" />
+    </ItemGroup>
+
 </Project>

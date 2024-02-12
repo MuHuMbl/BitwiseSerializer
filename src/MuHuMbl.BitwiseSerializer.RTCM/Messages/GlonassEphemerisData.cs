@@ -3,7 +3,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages
 {
-    public class GlonassEphemerisData
+    public class GlonassEphemerisData : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

@@ -1,4 +1,4 @@
-namespace MuHuMbl.BitwiseSerializer.RTCM;
+namespace MuHuMbl.BitwiseSerializer.RTCM.HashAlgorithms;
 
 public interface IHashAlgorithm
 {

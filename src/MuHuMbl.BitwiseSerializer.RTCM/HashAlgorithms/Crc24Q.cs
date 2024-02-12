@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace MuHuMbl.BitwiseSerializer.RTCM
+﻿namespace MuHuMbl.BitwiseSerializer.RTCM.HashAlgorithms
 {
     public class Crc24Q : IHashAlgorithm
     {

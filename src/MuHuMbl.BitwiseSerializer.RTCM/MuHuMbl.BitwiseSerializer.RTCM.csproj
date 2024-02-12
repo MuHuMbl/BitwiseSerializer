@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Messages\Observations\Items\" />
+      <Folder Include="Messages\Observations\Msm\Items\" />
     </ItemGroup>
 
 </Project>

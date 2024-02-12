@@ -1,14 +1,18 @@
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.AntennaDescription;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Items;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Items.Gps;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass.Items;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Gps;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Gps.Items;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Items.Msm.SatelliteData;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Items.Msm.SignalData;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Items.Rtk.Glonass;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Items.Rtk.Gps;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass.Items;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps.Items;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SatelliteData;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SignalData;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.StationCoordinates;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM
@@ -66,13 +70,16 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             
             _rtcmTypeMap.Add(MessageType.NetworkAuxiliaryStationData, typeof(NetworkAuxiliaryStationData));
             
-            _rtcmTypeMap.Add(MessageType.GpsIonosphericCorrection, typeof(NetworkRtkData<GpsIonosphericCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GpsGeometricCorrection, typeof(NetworkRtkData<GpsGeometricCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GpsCombinedCorrections, typeof(NetworkRtkData<GpsCombinedCorrectionDifferences>));
+            _rtcmTypeMap.Add(MessageType.GpsIonosphericCorrection, typeof(GpsNetworkRtkCorrections<GpsIonosphericCorrectionDifferences>));
+            _rtcmTypeMap.Add(MessageType.GpsGeometricCorrection, typeof(GpsNetworkRtkCorrections<GpsGeometricCorrectionDifferences>));
+            _rtcmTypeMap.Add(MessageType.GpsCombinedCorrections, typeof(GpsNetworkRtkCorrections<GpsCombinedCorrectionDifferences>));
             _rtcmTypeMap.Add(MessageType.GpsNetworkResidual, typeof(GpsNetworkResidual));
             _rtcmTypeMap.Add(MessageType.GlonassNetworkResidual, typeof(GlonassNetworkResidual));
             _rtcmTypeMap.Add(MessageType.GpsNetworkFkpGradient, typeof(GpsNetworkFkpGradient));
             _rtcmTypeMap.Add(MessageType.GlonassNetworkFkpGradient, typeof(GlonassNetworkFkpGradient));
+            _rtcmTypeMap.Add(MessageType.GlonassIonosphericCorrection, typeof(GlonassNetworkRtkCorrections<GlonassIonosphericCorrectionDifferences>));
+            _rtcmTypeMap.Add(MessageType.GlonassGeometricCorrection, typeof(GlonassNetworkRtkCorrections<GlonassGeometricCorrectionDifferences>));
+            _rtcmTypeMap.Add(MessageType.GlonassCombinedCorrections, typeof(GlonassNetworkRtkCorrections<GlonassCombinedCorrectionDifferences>));
             
             
             _rtcmTypeMap.Add(MessageType.SystemParameters, typeof(SystemParametersData));

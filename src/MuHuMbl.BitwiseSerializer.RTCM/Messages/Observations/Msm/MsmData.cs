@@ -3,7 +3,7 @@ using MuHuMbl.BitwiseSerializer.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
-namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations
+namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm
 {
     public class MsmData<TSatelliteData, TObservation> : IRtcmMessage
     {

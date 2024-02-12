@@ -11,6 +11,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass.Items;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps.Items;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SatelliteData;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SignalData;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.StationCoordinates;

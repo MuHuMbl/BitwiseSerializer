@@ -1,6 +1,7 @@
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.AntennaDescription;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.AuxiliaryOperationInformation;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass.Items;
@@ -15,6 +16,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SatelliteData;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SignalData;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.StationCoordinates;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.TransformationParameterInformation;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM
 {
@@ -33,15 +35,6 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             _rtcmTypeMap.Add(MessageType.AntennaDescriptor, typeof(AntennaDescriptor));
             _rtcmTypeMap.Add(MessageType.AntennaDescriptorAndSerialNumber, typeof(AntennaDescriptorAndSerialNumber));
             
-            _rtcmTypeMap.Add(MessageType.GlonassEphemerisData, typeof(GlonassEphemerisData));
-            
-            _rtcmTypeMap.Add(MessageType.GlonassL1Only, typeof(GlonassRtkData<GlonassL1Only>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1OnlyExtended, typeof(GlonassRtkData<GlonassL1OnlyExtended>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1L2, typeof(GlonassRtkData<GlonassL1L2>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1L2Extended, typeof(GlonassRtkData<GlonassL1L2Extended>));
-            
-            _rtcmTypeMap.Add(MessageType.GpsEphemerisData, typeof(GpsEphemerisData));
-            
             _rtcmTypeMap.Add(MessageType.GpsL1Only, typeof(GpsRtkData<GpsL1Only>));
             _rtcmTypeMap.Add(MessageType.GpsL1OnlyExtended, typeof(GpsRtkData<GpsL1OnlyExtended>));
             _rtcmTypeMap.Add(MessageType.GpsL1L2, typeof(GpsRtkData<GpsL1L2>));
@@ -54,6 +47,12 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             _rtcmTypeMap.Add(MessageType.GpsMsm5, typeof(MsmData<Msm57,Msm5>));
             _rtcmTypeMap.Add(MessageType.GpsMsm6, typeof(MsmData<Msm46,Msm6>));
             _rtcmTypeMap.Add(MessageType.GpsMsm7, typeof(MsmData<Msm57,Msm7>));
+            
+            _rtcmTypeMap.Add(MessageType.GlonassL1Only, typeof(GlonassRtkData<GlonassL1Only>));
+            _rtcmTypeMap.Add(MessageType.GlonassL1OnlyExtended, typeof(GlonassRtkData<GlonassL1OnlyExtended>));
+            _rtcmTypeMap.Add(MessageType.GlonassL1L2, typeof(GlonassRtkData<GlonassL1L2>));
+            _rtcmTypeMap.Add(MessageType.GlonassL1L2Extended, typeof(GlonassRtkData<GlonassL1L2Extended>));
+            
             _rtcmTypeMap.Add(MessageType.GlonassMsm1, typeof(MsmData<Msm123,Msm1>));
             _rtcmTypeMap.Add(MessageType.GlonassMsm2, typeof(MsmData<Msm123,Msm2>));
             _rtcmTypeMap.Add(MessageType.GlonassMsm3, typeof(MsmData<Msm123,Msm3>));
@@ -61,6 +60,7 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             _rtcmTypeMap.Add(MessageType.GlonassMsm5, typeof(MsmData<Msm57,Msm5>)); 
             _rtcmTypeMap.Add(MessageType.GlonassMsm6, typeof(MsmData<Msm46,Msm6>)); 
             _rtcmTypeMap.Add(MessageType.GlonassMsm7, typeof(MsmData<Msm57,Msm7>)); 
+            
             _rtcmTypeMap.Add(MessageType.GalileoMsm1, typeof(MsmData<Msm123,Msm1>));
             _rtcmTypeMap.Add(MessageType.GalileoMsm2, typeof(MsmData<Msm123,Msm2>));
             _rtcmTypeMap.Add(MessageType.GalileoMsm3, typeof(MsmData<Msm123,Msm3>));
@@ -75,15 +75,29 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             _rtcmTypeMap.Add(MessageType.GpsGeometricCorrection, typeof(GpsNetworkRtkCorrections<GpsGeometricCorrectionDifferences>));
             _rtcmTypeMap.Add(MessageType.GpsCombinedCorrections, typeof(GpsNetworkRtkCorrections<GpsCombinedCorrectionDifferences>));
             _rtcmTypeMap.Add(MessageType.GpsNetworkResidual, typeof(GpsNetworkResidual));
-            _rtcmTypeMap.Add(MessageType.GlonassNetworkResidual, typeof(GlonassNetworkResidual));
             _rtcmTypeMap.Add(MessageType.GpsNetworkFkpGradient, typeof(GpsNetworkFkpGradient));
+            
+            _rtcmTypeMap.Add(MessageType.GlonassNetworkResidual, typeof(GlonassNetworkResidual));
             _rtcmTypeMap.Add(MessageType.GlonassNetworkFkpGradient, typeof(GlonassNetworkFkpGradient));
             _rtcmTypeMap.Add(MessageType.GlonassIonosphericCorrection, typeof(GlonassNetworkRtkCorrections<GlonassIonosphericCorrectionDifferences>));
             _rtcmTypeMap.Add(MessageType.GlonassGeometricCorrection, typeof(GlonassNetworkRtkCorrections<GlonassGeometricCorrectionDifferences>));
             _rtcmTypeMap.Add(MessageType.GlonassCombinedCorrections, typeof(GlonassNetworkRtkCorrections<GlonassCombinedCorrectionDifferences>));
             
             
-            _rtcmTypeMap.Add(MessageType.SystemParameters, typeof(SystemParametersData));
+            _rtcmTypeMap.Add(MessageType.SystemParameters, typeof(SystemParameters));
+            _rtcmTypeMap.Add(MessageType.GlonassEphemerisData, typeof(GlonassEphemerisData));
+            _rtcmTypeMap.Add(MessageType.GpsEphemerisData, typeof(GpsEphemerisData));
+            _rtcmTypeMap.Add(MessageType.UnicodeText, typeof(UnicodeText));
+            _rtcmTypeMap.Add(MessageType.GlonassL1L2CodePhaseBiases, typeof(GlonassL1L2CodePhaseBiases));
+            
+            _rtcmTypeMap.Add(MessageType.HelmertAbridgedMolodenskiTransformationParameters, typeof(HelmertAbridgedMolodenskiTransformationParameters));
+            _rtcmTypeMap.Add(MessageType.MolodenskiBadekasTransformationParameters, typeof(MolodenskiBadekasTransformationParameters));
+            _rtcmTypeMap.Add(MessageType.EllipsoidalGridRepresentation, typeof(EllipsoidalGridRepresentation));
+            _rtcmTypeMap.Add(MessageType.PlaneGridRepresentation, typeof(PlaneGridRepresentation));
+            _rtcmTypeMap.Add(MessageType.NonLambertProjectionParameters, typeof(NonLambertProjectionParameters));
+            _rtcmTypeMap.Add(MessageType.LambertProjectionParameters, typeof(LambertProjectionParameters));
+            _rtcmTypeMap.Add(MessageType.ObliqueMercatorProjectionParameters, typeof(ObliqueMercatorProjectionParameters));
+            
         }
 
         public Type GetMessageType(MessageType messageType)

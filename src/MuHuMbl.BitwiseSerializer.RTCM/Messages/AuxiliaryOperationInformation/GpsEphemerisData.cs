@@ -1,7 +1,7 @@
 ﻿using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
-namespace MuHuMbl.BitwiseSerializer.RTCM.Messages
+namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.AuxiliaryOperationInformation
 {
     public class GpsEphemerisData : IRtcmMessage 
     {

@@ -1,9 +1,9 @@
 ﻿using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
-namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Items
+namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.AuxiliaryOperationInformation.Items
 {
-    public class SystemMessage 
+    public class SystemParametersItem 
     {
         [RtcmField(0, RtcmType.Uint12)]
         public ushort MessageId { get; set; }

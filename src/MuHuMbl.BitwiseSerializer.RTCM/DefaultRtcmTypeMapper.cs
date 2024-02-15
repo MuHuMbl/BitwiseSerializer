@@ -109,7 +109,7 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             AddMap<SsrGlonassHighRateClockCorrection>(MessageType.SsrGlonassHighRateClockCorrection);
         }
 
-        public void AddMap<T>(MessageType messageType) where T : class, IRtcmMessage
+        public void AddMap<T>(MessageType messageType, bool replace = false) where T : class, IRtcmMessage
         {
             _rtcmTypeMap.Add(messageType, typeof(T));
         }
@@ -122,6 +122,11 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
             }
 
             return messageObjectType;
+        }
+        
+        public bool TryGetMessageType(MessageType messageType, out Type messageObjectType)
+        {
+            return _rtcmTypeMap.TryGetValue(messageType, out messageObjectType);
         }
     }
 }

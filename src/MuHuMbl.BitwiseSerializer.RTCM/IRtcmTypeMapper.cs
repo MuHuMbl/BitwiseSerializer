@@ -7,6 +7,8 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
     {
         public Type GetMessageType(MessageType messageType);
 
-        void AddMap<T>(MessageType messageType) where T : class, IRtcmMessage;
+        bool TryGetMessageType(MessageType messageType, out Type messageObjectType);
+
+        void AddMap<T>(MessageType messageType, bool replace = false) where T : class, IRtcmMessage;
     }
 }

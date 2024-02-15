@@ -5,7 +5,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass
 {
-    public class GlonassNetworkRtkCorrections<TDataItem> : IRtcmMessage
+    public abstract class GlonassNetworkRtkCorrections<TDataItem> : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

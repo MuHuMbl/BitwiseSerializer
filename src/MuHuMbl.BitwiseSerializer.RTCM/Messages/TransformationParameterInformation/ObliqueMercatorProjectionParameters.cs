@@ -3,7 +3,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.TransformationParameterInformation
 {
-    public class ObliqueMercatorProjectionParameters
+    public class ObliqueMercatorProjectionParameters : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

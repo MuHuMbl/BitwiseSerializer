@@ -20,6 +20,7 @@ namespace MuHuMbl.BitwiseSerializer.RTCM.Enums
         Int24,
         Int25,
         Int26,
+        Int27,
         Int30,
         Int32,
         Int34,

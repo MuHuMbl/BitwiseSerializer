@@ -68,6 +68,7 @@ public class RtcmFieldAttribute : DataFieldAttribute
             RtcmType.Uint25 => 25,
             RtcmType.Uint26 => 26,
             RtcmType.Int26 => 26,
+            RtcmType.Int27 => 27,
             RtcmType.Uint27 => 27,
             RtcmType.IntS27 => 27,
             RtcmType.Int30 => 30,

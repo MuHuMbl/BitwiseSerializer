@@ -2,10 +2,11 @@
 using MuHuMbl.BitwiseSerializer.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass.Items;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass
 {
-    public class GlonassRtkData<TSignal> : IRtcmMessage 
+    public abstract class GlonassRtkData<TSignal> : IRtcmMessage where TSignal : IGlonassRtkItem
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

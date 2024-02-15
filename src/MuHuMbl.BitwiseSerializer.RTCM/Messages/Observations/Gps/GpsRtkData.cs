@@ -2,10 +2,11 @@
 using MuHuMbl.BitwiseSerializer.Enums;
 using MuHuMbl.BitwiseSerializer.RTCM.Attributes;
 using MuHuMbl.BitwiseSerializer.RTCM.Enums;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps.Items;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps
 {
-    public class GpsRtkData<TSignal> : IRtcmMessage 
+    public abstract class GpsRtkData<TSignal> : IRtcmMessage where TSignal : IGpsRtkItem 
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

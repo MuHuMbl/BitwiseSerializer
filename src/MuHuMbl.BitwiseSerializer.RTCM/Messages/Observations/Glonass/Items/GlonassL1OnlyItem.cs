@@ -3,8 +3,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass.Items
 {
-    
-    public class GlonassL1Only 
+    public class GlonassL1OnlyItem : IGlonassRtkItem 
     {
         [RtcmField(0, RtcmType.Uint6)]
         public byte SatelliteId { get; set; }

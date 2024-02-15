@@ -4,17 +4,14 @@ using MuHuMbl.BitwiseSerializer.RTCM.Messages.AntennaDescription;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.AuxiliaryOperationInformation;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Glonass.Items;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Gps;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Gps.Items;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Glonass.Items;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps.Items;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SatelliteData;
-using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Items.SignalData;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Galileo;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Glonass;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm.Gps;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.StateSpaceRepresentationParameters.Glonass;
+using MuHuMbl.BitwiseSerializer.RTCM.Messages.StateSpaceRepresentationParameters.Gps;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.StationCoordinates;
 using MuHuMbl.BitwiseSerializer.RTCM.Messages.TransformationParameterInformation;
 
@@ -28,81 +25,103 @@ namespace MuHuMbl.BitwiseSerializer.RTCM
         {
             _rtcmTypeMap = new Dictionary<MessageType, Type>();
             
-            _rtcmTypeMap.Add(MessageType.AntennaReferencePoint, typeof(AntennaReferencePoint));
-            _rtcmTypeMap.Add(MessageType.AntennaReferencePointWithHeight, typeof(AntennaReferencePoint));
-            _rtcmTypeMap.Add(MessageType.PhysicalReferenceStationPosition, typeof(PhysicalReferenceStationPosition));
+            AddMap<AntennaReferencePoint>(MessageType.AntennaReferencePoint);
+            AddMap<AntennaReferencePointWithHeight>(MessageType.AntennaReferencePointWithHeight);  
+            AddMap<PhysicalReferenceStationPosition>(MessageType.PhysicalReferenceStationPosition);  
             
-            _rtcmTypeMap.Add(MessageType.AntennaDescriptor, typeof(AntennaDescriptor));
-            _rtcmTypeMap.Add(MessageType.AntennaDescriptorAndSerialNumber, typeof(AntennaDescriptorAndSerialNumber));
+            AddMap<AntennaDescriptor>(MessageType.AntennaDescriptor);  
+            AddMap<AntennaDescriptorAndSerialNumber>(MessageType.AntennaDescriptorAndSerialNumber);  
             
-            _rtcmTypeMap.Add(MessageType.GpsL1Only, typeof(GpsRtkData<GpsL1Only>));
-            _rtcmTypeMap.Add(MessageType.GpsL1OnlyExtended, typeof(GpsRtkData<GpsL1OnlyExtended>));
-            _rtcmTypeMap.Add(MessageType.GpsL1L2, typeof(GpsRtkData<GpsL1L2>));
-            _rtcmTypeMap.Add(MessageType.GpsL1L2Extended, typeof(GpsRtkData<GpsL1L2Extended>));
+            AddMap<GpsL1Only>(MessageType.GpsL1Only);
+            AddMap<GpsL1OnlyExtended>(MessageType.GpsL1OnlyExtended);  
+            AddMap<GpsL1L2>(MessageType.GpsL1L2);  
+            AddMap<GpsL1L2Extended>(MessageType.GpsL1L2Extended);
             
-            _rtcmTypeMap.Add(MessageType.GpsMsm1, typeof(MsmData<Msm123,Msm1>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm2, typeof(MsmData<Msm123,Msm2>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm3, typeof(MsmData<Msm123,Msm3>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm4, typeof(MsmData<Msm46,Msm4>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm5, typeof(MsmData<Msm57,Msm5>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm6, typeof(MsmData<Msm46,Msm6>));
-            _rtcmTypeMap.Add(MessageType.GpsMsm7, typeof(MsmData<Msm57,Msm7>));
+            AddMap<GpsMsm1>(MessageType.GpsMsm1);  
+            AddMap<GpsMsm2>(MessageType.GpsMsm2);  
+            AddMap<GpsMsm3>(MessageType.GpsMsm3);  
+            AddMap<GpsMsm4>(MessageType.GpsMsm4);
+            AddMap<GpsMsm5>(MessageType.GpsMsm5);  
+            AddMap<GpsMsm6>(MessageType.GpsMsm6);  
+            AddMap<GpsMsm7>(MessageType.GpsMsm7);
             
-            _rtcmTypeMap.Add(MessageType.GlonassL1Only, typeof(GlonassRtkData<GlonassL1Only>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1OnlyExtended, typeof(GlonassRtkData<GlonassL1OnlyExtended>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1L2, typeof(GlonassRtkData<GlonassL1L2>));
-            _rtcmTypeMap.Add(MessageType.GlonassL1L2Extended, typeof(GlonassRtkData<GlonassL1L2Extended>));
+            AddMap<GlonassL1Only>(MessageType.GlonassL1Only);
+            AddMap<GlonassL1OnlyExtended>(MessageType.GlonassL1OnlyExtended);  
+            AddMap<GlonassL1L2>(MessageType.GlonassL1L2);  
+            AddMap<GlonassL1L2Extended>(MessageType.GlonassL1L2Extended);
             
-            _rtcmTypeMap.Add(MessageType.GlonassMsm1, typeof(MsmData<Msm123,Msm1>));
-            _rtcmTypeMap.Add(MessageType.GlonassMsm2, typeof(MsmData<Msm123,Msm2>));
-            _rtcmTypeMap.Add(MessageType.GlonassMsm3, typeof(MsmData<Msm123,Msm3>));
-            _rtcmTypeMap.Add(MessageType.GlonassMsm4, typeof(MsmData<Msm46,Msm4>)); 
-            _rtcmTypeMap.Add(MessageType.GlonassMsm5, typeof(MsmData<Msm57,Msm5>)); 
-            _rtcmTypeMap.Add(MessageType.GlonassMsm6, typeof(MsmData<Msm46,Msm6>)); 
-            _rtcmTypeMap.Add(MessageType.GlonassMsm7, typeof(MsmData<Msm57,Msm7>)); 
+            AddMap<GlonassMsm1>(MessageType.GlonassMsm1);  
+            AddMap<GlonassMsm2>(MessageType.GlonassMsm2);  
+            AddMap<GlonassMsm3>(MessageType.GlonassMsm3);  
+            AddMap<GlonassMsm4>(MessageType.GlonassMsm4);
+            AddMap<GlonassMsm5>(MessageType.GlonassMsm5);  
+            AddMap<GlonassMsm6>(MessageType.GlonassMsm6);  
+            AddMap<GlonassMsm7>(MessageType.GlonassMsm7);
             
-            _rtcmTypeMap.Add(MessageType.GalileoMsm1, typeof(MsmData<Msm123,Msm1>));
-            _rtcmTypeMap.Add(MessageType.GalileoMsm2, typeof(MsmData<Msm123,Msm2>));
-            _rtcmTypeMap.Add(MessageType.GalileoMsm3, typeof(MsmData<Msm123,Msm3>));
-            _rtcmTypeMap.Add(MessageType.GalileoMsm4, typeof(MsmData<Msm46,Msm4>)); 
-            _rtcmTypeMap.Add(MessageType.GalileoMsm5, typeof(MsmData<Msm57,Msm5>)); 
-            _rtcmTypeMap.Add(MessageType.GalileoMsm6, typeof(MsmData<Msm46,Msm6>)); 
-            _rtcmTypeMap.Add(MessageType.GalileoMsm7, typeof(MsmData<Msm57,Msm7>)); 
+            AddMap<GalileoMsm1>(MessageType.GalileoMsm1);  
+            AddMap<GalileoMsm2>(MessageType.GalileoMsm2);  
+            AddMap<GalileoMsm3>(MessageType.GalileoMsm3);  
+            AddMap<GalileoMsm4>(MessageType.GalileoMsm4);
+            AddMap<GalileoMsm5>(MessageType.GalileoMsm5);  
+            AddMap<GalileoMsm6>(MessageType.GalileoMsm6);  
+            AddMap<GalileoMsm7>(MessageType.GalileoMsm7);
             
-            _rtcmTypeMap.Add(MessageType.NetworkAuxiliaryStationData, typeof(NetworkAuxiliaryStationData));
+            AddMap<NetworkAuxiliaryStationData>(MessageType.NetworkAuxiliaryStationData);
             
-            _rtcmTypeMap.Add(MessageType.GpsIonosphericCorrection, typeof(GpsNetworkRtkCorrections<GpsIonosphericCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GpsGeometricCorrection, typeof(GpsNetworkRtkCorrections<GpsGeometricCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GpsCombinedCorrections, typeof(GpsNetworkRtkCorrections<GpsCombinedCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GpsNetworkResidual, typeof(GpsNetworkResidual));
-            _rtcmTypeMap.Add(MessageType.GpsNetworkFkpGradient, typeof(GpsNetworkFkpGradient));
+            AddMap<GpsIonosphericCorrection>(MessageType.GpsIonosphericCorrection);
+            AddMap<GpsGeometricCorrection>(MessageType.GpsGeometricCorrection);
+            AddMap<GpsCombinedCorrections>(MessageType.GpsCombinedCorrections);
+            AddMap<GpsNetworkResidual>(MessageType.GpsNetworkResidual);
+            AddMap<GpsNetworkFkpGradient>(MessageType.GpsNetworkFkpGradient);
             
-            _rtcmTypeMap.Add(MessageType.GlonassNetworkResidual, typeof(GlonassNetworkResidual));
-            _rtcmTypeMap.Add(MessageType.GlonassNetworkFkpGradient, typeof(GlonassNetworkFkpGradient));
-            _rtcmTypeMap.Add(MessageType.GlonassIonosphericCorrection, typeof(GlonassNetworkRtkCorrections<GlonassIonosphericCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GlonassGeometricCorrection, typeof(GlonassNetworkRtkCorrections<GlonassGeometricCorrectionDifferences>));
-            _rtcmTypeMap.Add(MessageType.GlonassCombinedCorrections, typeof(GlonassNetworkRtkCorrections<GlonassCombinedCorrectionDifferences>));
+            AddMap<GlonassNetworkResidual>(MessageType.GlonassNetworkResidual);
+            AddMap<GlonassNetworkFkpGradient>(MessageType.GlonassNetworkFkpGradient);
+            AddMap<GlonassIonosphericCorrection>(MessageType.GlonassIonosphericCorrection);
+            AddMap<GlonassGeometricCorrection>(MessageType.GlonassGeometricCorrection);
+            AddMap<GlonassCombinedCorrections>(MessageType.GlonassCombinedCorrections);
             
+            AddMap<SystemParameters>(MessageType.SystemParameters);
+            AddMap<GlonassEphemerisData>(MessageType.GlonassEphemerisData);
+            AddMap<GpsEphemerisData>(MessageType.GpsEphemerisData);
+            AddMap<UnicodeText>(MessageType.UnicodeText);
+            AddMap<GlonassL1L2CodePhaseBiases>(MessageType.GlonassL1L2CodePhaseBiases);
             
-            _rtcmTypeMap.Add(MessageType.SystemParameters, typeof(SystemParameters));
-            _rtcmTypeMap.Add(MessageType.GlonassEphemerisData, typeof(GlonassEphemerisData));
-            _rtcmTypeMap.Add(MessageType.GpsEphemerisData, typeof(GpsEphemerisData));
-            _rtcmTypeMap.Add(MessageType.UnicodeText, typeof(UnicodeText));
-            _rtcmTypeMap.Add(MessageType.GlonassL1L2CodePhaseBiases, typeof(GlonassL1L2CodePhaseBiases));
+            AddMap<HelmertAbridgedMolodenskiTransformationParameters>(MessageType.HelmertAbridgedMolodenskiTransformationParameters);
+            AddMap<MolodenskiBadekasTransformationParameters>(MessageType.MolodenskiBadekasTransformationParameters);
+            AddMap<EllipsoidalGridRepresentation>(MessageType.EllipsoidalGridRepresentation);
+            AddMap<PlaneGridRepresentation>(MessageType.PlaneGridRepresentation);
+            AddMap<NonLambertProjectionParameters>(MessageType.NonLambertProjectionParameters);
+            AddMap<LambertProjectionParameters>(MessageType.LambertProjectionParameters);
+            AddMap<ObliqueMercatorProjectionParameters>(MessageType.ObliqueMercatorProjectionParameters);
             
-            _rtcmTypeMap.Add(MessageType.HelmertAbridgedMolodenskiTransformationParameters, typeof(HelmertAbridgedMolodenskiTransformationParameters));
-            _rtcmTypeMap.Add(MessageType.MolodenskiBadekasTransformationParameters, typeof(MolodenskiBadekasTransformationParameters));
-            _rtcmTypeMap.Add(MessageType.EllipsoidalGridRepresentation, typeof(EllipsoidalGridRepresentation));
-            _rtcmTypeMap.Add(MessageType.PlaneGridRepresentation, typeof(PlaneGridRepresentation));
-            _rtcmTypeMap.Add(MessageType.NonLambertProjectionParameters, typeof(NonLambertProjectionParameters));
-            _rtcmTypeMap.Add(MessageType.LambertProjectionParameters, typeof(LambertProjectionParameters));
-            _rtcmTypeMap.Add(MessageType.ObliqueMercatorProjectionParameters, typeof(ObliqueMercatorProjectionParameters));
+            AddMap<SsrGpsOrbitCorrection>(MessageType.SsrGpsOrbitCorrection);
+            AddMap<SsrGpsClockCorrection>(MessageType.SsrGpsClockCorrection);
+            AddMap<SsrGpsCodeBias>(MessageType.SsrGpsCodeBias);
+            AddMap<SsrGpsCombinedOrbitClockCorrections>(MessageType.SsrGpsCombinedOrbitClockCorrections);
+            AddMap<SsrGpsUra>(MessageType.SsrGpsUra);
+            AddMap<SsrGpsHighRateClockCorrection>(MessageType.SsrGpsHighRateClockCorrection);
             
+            AddMap<SsrGlonassOrbitCorrection>(MessageType.SsrGlonassOrbitCorrection);
+            AddMap<SsrGlonassClockCorrection>(MessageType.SsrGlonassClockCorrection);
+            AddMap<SsrGlonassCodeBias>(MessageType.SsrGlonassCodeBias);
+            AddMap<SsrGlonassCombinedOrbitClockCorrections>(MessageType.SsrGlonassCombinedOrbitClockCorrections);
+            AddMap<SsrGlonassUra>(MessageType.SsrGlonassUra);
+            AddMap<SsrGlonassHighRateClockCorrection>(MessageType.SsrGlonassHighRateClockCorrection);
+        }
+
+        public void AddMap<T>(MessageType messageType) where T : class, IRtcmMessage
+        {
+            _rtcmTypeMap.Add(messageType, typeof(T));
         }
 
         public Type GetMessageType(MessageType messageType)
         {
-            throw new NotImplementedException();
+            if (!_rtcmTypeMap.TryGetValue(messageType, out var messageObjectType))
+            {
+                throw new NotSupportedException($"{messageType} message type is not supported");
+            }
+
+            return messageObjectType;
         }
     }
 }

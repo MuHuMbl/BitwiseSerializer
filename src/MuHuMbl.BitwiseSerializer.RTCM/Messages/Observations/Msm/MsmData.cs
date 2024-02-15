@@ -5,7 +5,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Msm
 {
-    public class MsmData<TSatelliteData, TObservation> : IRtcmMessage
+    public abstract class MsmData<TSatelliteData, TObservation> : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }

@@ -3,8 +3,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.Observations.Gps.Items
 {
-    
-    public class GpsL1L2Extended 
+    public class GpsL1L2ExtendedItem : IGpsRtkItem   
     {
         [RtcmField(0, RtcmType.Uint6)]
         public byte SatelliteId { get; set; }

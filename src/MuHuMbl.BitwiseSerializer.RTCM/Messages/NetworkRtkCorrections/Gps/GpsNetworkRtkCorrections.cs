@@ -5,7 +5,7 @@ using MuHuMbl.BitwiseSerializer.RTCM.Enums;
 
 namespace MuHuMbl.BitwiseSerializer.RTCM.Messages.NetworkRtkCorrections.Gps
 {
-    public class GpsNetworkRtkCorrections<TDataItem> : IRtcmMessage
+    public abstract class GpsNetworkRtkCorrections<TDataItem> : IRtcmMessage
     {
         [RtcmField(0, RtcmType.Uint12)]
         public MessageType MessageType { get; set; }
